@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <script src="./script.js" defer></script>
+    <title>Frontend Mentor | Interactive card details form</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper flex">
+      <div class="panel">
+        <img src="./images/bg-main-desktop.png" alt="" />
+      </div>
+      <div class="container flex">
+        <form action="">
+          <div>
+            <p class="tx-sm">Cardholder name</p>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="e.g. Jane Appleseed"
+            />
+          </div>
+          <div>
+            <p class="tx-sm">Card number</p>
+            <input
+              type="number"
+              name="name"
+              id="name"
+              placeholder="e.g. 1234 5678 9123 0000"
+            />
+          </div>
+          <div class="flex parent">
+            <div class="parent-date">
+              <p class="tx-sm">Exp. Date (MM/YY)</p>
+              <div class="flex">
+                <input type="number" name="" id="" placeholder="MM" />
+                <input type="number" name="" id="" placeholder="YY" />
+              </div>
+            </div>
+            <div class="parent-cvc">
+              <p class="tx-sm">CVC</p>
+              <input
+                type="number"
+                name=""
+                id="cvc"
+                placeholder="e.g. 123 Confirm"
+              />
+            </div>
+          </div>
+          <button class="tx-sm">Confirm</button>
+        </form>
+      </div>
+      <div class="cards">
+        <div class="card card__1">
+          <img src="./images/card-logo.svg" alt="" class="logo" />
+          <img src="./images/bg-card-front.png" alt="" />
+          <div class="box">
+            <p class="card-num">
+              0000 0000 0000 0000
+              <!-- <span>0000</span>
+              <span>0000</span>
+              <span>0000</span>
+              <span>0000</span> -->
+            </p>
+            <div class="info flex">
+              <p class="name tx-md">Mohamed ameen</p>
+              <p class="date tx-md">0/00</p>
+            </div>
+          </div>
+        </div>
+        <div class="card card__2">
+          <img src="./images/bg-card-back.png" alt="" />
+          <p class="cvc__label tx-md">000</p>
+        </div>
+      </div>
+    </div>
+    <!-- 0000 0000 0000 0000 Jane Appleseed 00/00 000 Cardholder Name e.g. Jane
+    Appleseed Card Number e.g. 1234 5678 9123 0000 Exp. Date (MM/YY) MM YY CVC
+    e.g. 123 Confirm -->
+
+    <!-- Completed state start -->
+
+    <!-- Thank you! We've added your card details Continue -->
+  </body>
+</html>
