@@ -59,7 +59,7 @@ form input {
   margin-top: 0.3rem;
 
   padding: 6px;
-  border: 0.5px solid var(--dark-grayish-violet);
+  border: 1px solid var(--dark-grayish-violet);
   border-radius: 3px;
   outline: none;
 
@@ -118,7 +118,7 @@ button:hover {
   overflow: hidden;
 
   position: absolute;
-  left: 38%;
+  left: 35%;
   top: 50%;
   translate: -50% -50%;
 }
@@ -193,7 +193,7 @@ button:hover {
 /* Utilities */
 
 .border-active {
-  border-color: var(--light-grayish-violet);
+  border-color: var(--linear-gradient);
 }
 .border-error {
   border-color: var(--red);
