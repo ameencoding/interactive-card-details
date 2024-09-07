@@ -6,15 +6,20 @@ const form = getDocument("form");
 
 const cardNameInput = getDocument("#name");
 const cardNameLabel = getDocument(".info .name");
+let cardNameError = false;
 
 const cardNumberInput = getDocument("#number");
 const cardNumberLabel = getDocument(".card-num");
+let cardNumberError = false;
 
 const cardMonthInput = getDocument("#month");
+let cardMonthError = false;
 const cardYearInput = getDocument("#year");
+let cardYearError = false;
 
 const cardCvcInput = getDocument("#cvc");
 const cardCvcLabel = getDocument(".cvc__label");
+let cardCvcError = false;
 
 // ####### Name #######
 cardNameInput.addEventListener("input", function () {
@@ -80,31 +85,123 @@ const capitalize = (content) => {
     .join(" ");
 };
 
+const errorController = function (inputEl, spanEl, msg, state) {
+  if (state) {
+    inputEl.classList.add("border-error");
+
+    spanEl.textContent = msg;
+    spanEl.classList.remove("hide");
+  } else {
+    inputEl.classList.remove("border-error");
+
+    spanEl.textContent = msg;
+    spanEl.classList.add("hide");
+  }
+};
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   // Name
-  cardNameInput.value === ""
-    ? cardNameInput.classList.add("border-error")
-    : cardNameInput.classList.remove("border-error");
+  if (cardNameInput.value === "") {
+    cardNameError = true;
+    errorController(
+      getDocument("#name"),
+      getDocument(".name-error"),
+      "Can't be empty!",
+      cardNameError
+    );
+  } else {
+    cardNameError = false;
+    errorController(
+      getDocument("#name"),
+      getDocument(".name-error"),
+      "",
+      cardNameError
+    );
+  }
 
   // Number
-  cardNumberInput.value === ""
-    ? cardNumberInput.classList.add("border-error")
-    : cardNumberInput.classList.remove("border-error");
+  if (cardNumberInput.value === "") {
+    cardNumberError = true;
+    errorController(
+      getDocument("#number"),
+      getDocument(".num-error"),
+      "Can't be empty!",
+      cardNumberError
+    );
+  } else if (cardNumberInput.value.length < 16) {
+    cardNumberError = true;
+    errorController(
+      getDocument("#number"),
+      getDocument(".num-error"),
+      "Invalid card number!",
+      cardNumberError
+    );
+  } else {
+    cardNumberError = false;
+    cardNumberInput.classList.remove("border-error");
+    errorController(
+      getDocument("#number"),
+      getDocument(".num-error"),
+      "",
+      cardNumberError
+    );
+  }
 
   // Month
-  cardMonthInput.value === ""
-    ? cardMonthInput.classList.add("border-error")
-    : cardMonthInput.classList.remove("border-error");
+  if (cardMonthInput.value === "") {
+    cardMonthInput.classList.add("border-error");
+    cardMonthError = true;
+  } else {
+    cardMonthError = false;
+    cardMonthInput.classList.remove("border-error");
+  }
 
   // Year
-  cardYearInput.value === ""
-    ? cardYearInput.classList.add("border-error")
-    : cardYearInput.classList.remove("border-error");
+  if (cardYearInput.value === "") {
+    cardYearInput.classList.add("border-error");
+    cardYearError = true;
+  } else {
+    cardYearInput.classList.remove("border-error");
+    cardYearError = false;
+  }
 
   // Cvc
-  cardCvcInput.value === ""
-    ? cardCvcInput.classList.add("border-error")
-    : cardCvcInput.classList.remove("border-error");
+  if (cardCvcInput.value === "") {
+    cardCvcError = true;
+    errorController(
+      getDocument("#cvc"),
+      getDocument(".cvc-error"),
+      "Can't be empty",
+      cardCvcError
+    );
+  } else if (cardCvcInput.value.length < 3) {
+    cardCvcError = true;
+    errorController(
+      getDocument("#cvc"),
+      getDocument(".cvc-error"),
+      "Invalid CVC!",
+      cardCvcError
+    );
+  } else {
+    cardCvcError = false;
+    errorController(
+      getDocument("#cvc"),
+      getDocument(".cvc-error"),
+      "",
+      cardCvcError
+    );
+  }
+
+  // Finally
+  if (
+    !cardNameError &&
+    !cardNumberError &&
+    !cardMonthError &&
+    !cardYearError &&
+    !cardCvcError
+  ) {
+    console.log("WELCOME");
+  }
 });

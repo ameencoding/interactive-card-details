@@ -45,6 +45,22 @@ body {
   width: 280px;
 }
 
+form > div {
+  position: relative;
+}
+
+.error {
+  color: var(--red);
+  padding: 0px 1px;
+  background-color: var(--white);
+
+  position: absolute;
+  display: block;
+  width: fit-content;
+  right: 3%;
+  bottom: -6px;
+}
+
 form > div:not(:first-child) {
   margin-top: 1.1rem;
 }
@@ -192,11 +208,14 @@ button:hover {
 
 /* Utilities */
 
-.border-active {
-  border-color: var(--linear-gradient);
-}
 .border-error {
   border-color: var(--red);
+}
+
+.hide {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .flex {
@@ -211,4 +230,8 @@ button:hover {
 }
 .tx-xs {
   font-size: 0.65rem;
+}
+
+/* Media */
+@media only screen and (max-width: 600px) {
 }
