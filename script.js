@@ -202,6 +202,15 @@ form.addEventListener("submit", function (e) {
     !cardYearError &&
     !cardCvcError
   ) {
-    console.log("WELCOME");
+    setTimeout(() => displayThanks(), 1200);
   }
+});
+
+const displayThanks = function () {
+  form.classList.add("hide");
+  getDocument(".thanks").classList.remove("hide");
+};
+
+getDocument(".thanks button").addEventListener("click", function () {
+  setTimeout(() => location.reload(), 800);
 });

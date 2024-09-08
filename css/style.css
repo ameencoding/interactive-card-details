@@ -7,8 +7,8 @@
 }
 
 :root {
-  --linear-gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%); /* (active input border) */
-  --red: hsl(0, 100%, 66%); /* (input errors) */
+  --linear-gradient: linear-gradient(to left, #6448fe, #600594);
+  --red: hsl(0, 100%, 66%);
 
   --white: hsl(0, 0%, 100%);
   --light-grayish-violet: hsl(270, 3%, 87%);
@@ -29,16 +29,20 @@ body {
   position: relative;
 }
 
-.panel img {
-  display: block;
+.panel {
+  background: var(--linear-gradient);
+  height: inherit;
+  flex: 2;
 }
 
 .container {
-  width: 100%;
+  flex: 3;
   height: inherit;
 
   justify-content: center;
   align-items: center;
+
+  position: relative;
 }
 
 .container form {
@@ -113,7 +117,7 @@ button {
   padding: 10px 0;
   border: 0.5px solid transparent;
   border-radius: 4px;
-  background-color: var(--very-dark-violet);
+  background: var(--linear-gradient);
   color: var(--white);
 
   font-family: inherit;
@@ -127,8 +131,30 @@ button:hover {
   scale: 0.98;
 }
 
-/* Cards */
+/* Thanks */
+.thanks {
+  padding: 1rem;
+  position: absolute;
+}
 
+.thanks img {
+  height: 65px;
+  display: block;
+  margin: 0 auto;
+}
+
+.thanks h2 {
+  text-align: center;
+  margin: 1rem 0;
+  letter-spacing: 4px;
+  color: var(--very-dark-violet);
+}
+
+.thanks blockquote {
+  color: var(--very-dark-violet);
+}
+
+/* Cards */
 .cards {
   width: 380px;
   overflow: hidden;
@@ -234,4 +260,26 @@ button:hover {
 
 /* Media */
 @media only screen and (max-width: 600px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .container,
+  .panel {
+    flex: 1;
+  }
+
+  .cards {
+    left: 50%;
+    top: 30%;
+  }
+
+  .container form {
+    width: 400px;
+  }
+
+  .parent-date {
+    width: 55%;
+  }
 }
